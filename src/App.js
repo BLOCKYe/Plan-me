@@ -1,24 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
+import PlanMe from "./Components/PlanMe";
+import "./Styles/styles.css";
+import { TasksProvider } from "./Components/TasksContext";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <TasksProvider>
+      <div>
+        <PlanMe />
+      </div>
+    </TasksProvider>
   );
 }
 

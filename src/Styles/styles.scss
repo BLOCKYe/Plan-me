@@ -1,0 +1,152 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
+
+// colors
+$bg: #303136;
+$c1: #d7d7dd;
+$c2: #414247;
+
+// marigns
+.m10 {
+  margin-top: 10px;
+}
+
+.m20 {
+  margin-top: 20px;
+}
+
+.m40 {
+  margin-top: 40px;
+}
+
+// text formats
+.t1 {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.t2 {
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.o {
+  opacity: 0.3;
+}
+
+html {
+  background-color: $bg;
+  color: $c1;
+  font-size: 18px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.container {
+  padding: 0 30px;
+
+  .header {
+    .logo {
+      font-size: 30px;
+      font-weight: bold;
+    }
+  }
+
+  .tasklist {
+    .task {
+      background-color: $c2;
+      padding: 15px 15px;
+      border-radius: 10px;
+      display: grid;
+      grid-template-columns: 0fr 1fr 0fr;
+      grid-template-areas:
+        "check title edit"
+        ". extended extended"
+        ". extended extended";
+      align-items: center;
+
+      .check {
+        background-color: $c1;
+        width: 16px;
+        height: 16px;
+        border-radius: 4px;
+        margin-right: 20px;
+        grid-area: check;
+        z-index: 100;
+        cursor: pointer;
+      }
+
+      .checked {
+        background-color: #00b0ff;
+      }
+
+      .title {
+        grid-area: title;
+        cursor: pointer;
+      }
+
+      .edit {
+        justify-self: end;
+        font-size: 14px;
+        grid-area: edit;
+      }
+
+      .extended {
+        grid-area: extended;
+        cursor: pointer;
+
+        .desc {
+          grid-area: desc;
+        }
+
+        .date {
+          grid-area: date;
+        }
+      }
+    }
+  }
+
+  .add {
+    .button {
+      cursor: pointer;
+    }
+    .addModal {
+      height: 100vh;
+      width: calc(100% - 60px);
+      padding: 30px;
+      background-color: $bg;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 110;
+      overflow: hidden;
+
+      .input-title {
+        all: unset;
+        background-color: $c2;
+        border-radius: 10px;
+        padding: 10px;
+        margin-top: 20px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .input-desc {
+        @extend .input-title;
+      }
+
+      .input-date {
+        @extend .input-title;
+      }
+
+      .button {
+        @extend .input-title;
+        text-align: end;
+        font-weight: bold;
+        background-color: unset;
+      }
+    }
+  }
+}

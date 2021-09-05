@@ -1,0 +1,144 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
+.m10 {
+  margin-top: 10px;
+}
+
+.m20 {
+  margin-top: 20px;
+}
+
+.m40 {
+  margin-top: 40px;
+}
+
+.t1 {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.t2 {
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.o {
+  opacity: 0.3;
+}
+
+html {
+  background-color: #303136;
+  color: #d7d7dd;
+  font-size: 18px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.container {
+  padding: 0 30px;
+}
+
+.container .header .logo {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.container .tasklist .task {
+  background-color: #414247;
+  padding: 15px 15px;
+  border-radius: 10px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 0fr 1fr 0fr;
+      grid-template-columns: 0fr 1fr 0fr;
+      grid-template-areas: "check title edit" ". extended extended" ". extended extended";
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .tasklist .task .check {
+  background-color: #d7d7dd;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  margin-right: 20px;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: check;
+  z-index: 100;
+  cursor: pointer;
+}
+
+.container .tasklist .task .checked {
+  background-color: #00b0ff;
+}
+
+.container .tasklist .task .title {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: title;
+  cursor: pointer;
+}
+
+.container .tasklist .task .edit {
+  -ms-grid-column-align: end;
+      justify-self: end;
+  font-size: 14px;
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: edit;
+}
+
+.container .tasklist .task .extended {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 2;
+  grid-area: extended;
+  cursor: pointer;
+}
+
+.container .tasklist .task .extended .desc {
+  grid-area: desc;
+}
+
+.container .tasklist .task .extended .date {
+  grid-area: date;
+}
+
+.container .add .button {
+  cursor: pointer;
+}
+
+.container .add .addModal {
+  height: 100vh;
+  width: calc(100% - 60px);
+  padding: 30px;
+  background-color: #303136;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 110;
+  overflow: hidden;
+}
+
+.container .add .addModal .input-title, .container .add .addModal .input-desc, .container .add .addModal .input-date, .container .add .addModal .button {
+  all: unset;
+  background-color: #414247;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 20px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.container .add .addModal .button {
+  text-align: end;
+  font-weight: bold;
+  background-color: unset;
+}
+/*# sourceMappingURL=styles.css.map */
