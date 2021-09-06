@@ -18,6 +18,10 @@ $c2: #414247;
   margin-top: 40px;
 }
 
+.m80 {
+  margin-top: 80px;
+}
+
 // text formats
 .t1 {
   font-weight: bold;
@@ -46,107 +50,302 @@ html {
 
 .container {
   padding: 0 30px;
+}
 
-  .header {
-    .logo {
-      font-size: 30px;
-      font-weight: bold;
-    }
+.header {
+  .logo {
+    font-size: 30px;
+    font-weight: bold;
   }
+}
 
-  .tasklist {
-    .task {
-      background-color: $c2;
-      padding: 15px 15px;
-      border-radius: 10px;
-      display: grid;
-      grid-template-columns: 0fr 1fr 0fr;
-      grid-template-areas:
-        "check title edit"
-        ". extended extended"
-        ". extended extended";
-      align-items: center;
+.tasklist {
+  .task {
+    background-color: $c2;
+    padding: 15px 15px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 0fr 1fr 0fr;
+    grid-template-areas:
+      "check title edit"
+      "extended extended ."
+      "extended extended del";
+    align-items: center;
 
-      .check {
-        background-color: $c1;
-        width: 16px;
-        height: 16px;
-        border-radius: 4px;
-        margin-right: 20px;
-        grid-area: check;
-        z-index: 100;
-        cursor: pointer;
-      }
-
-      .checked {
-        background-color: #00b0ff;
-      }
-
-      .title {
-        grid-area: title;
-        cursor: pointer;
-      }
-
-      .edit {
-        justify-self: end;
-        font-size: 14px;
-        grid-area: edit;
-      }
-
-      .extended {
-        grid-area: extended;
-        cursor: pointer;
-
-        .desc {
-          grid-area: desc;
-        }
-
-        .date {
-          grid-area: date;
-        }
-      }
-    }
-  }
-
-  .add {
-    .button {
+    .check {
+      background-color: $c1;
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+      margin-right: 20px;
+      grid-area: check;
+      z-index: 100;
       cursor: pointer;
     }
-    .addModal {
-      height: 100vh;
-      width: calc(100% - 60px);
-      padding: 30px;
+
+    .checked {
       background-color: $bg;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 110;
-      overflow: hidden;
+    }
 
-      .input-title {
-        all: unset;
-        background-color: $c2;
+    .title {
+      grid-area: title;
+      cursor: pointer;
+      padding-right: 10px;
+    }
+
+    .edit {
+      justify-self: end;
+      font-size: 14px;
+      grid-area: edit;
+      cursor: pointer;
+    }
+
+    .del {
+      grid-area: del;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .extended {
+      grid-area: extended;
+      cursor: pointer;
+      padding-right: 10px;
+
+      .desc {
+        grid-area: desc;
+      }
+
+      .date {
+        grid-area: date;
+      }
+    }
+  }
+}
+.add {
+  .addButton {
+    cursor: pointer;
+    background-color: $c2;
+    width: auto;
+    text-align: center;
+    border-radius: 10px;
+    padding: 15px;
+  }
+
+  .addModal {
+    height: 100vh;
+    width: calc(100% - 60px);
+    max-width: 800px;
+    padding: 30px;
+    background-color: $bg;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 110;
+    overflow: hidden;
+    display: block;
+    padding-top: 30vh;
+
+    .input-title {
+      all: unset;
+      background-color: $c2;
+      border-radius: 10px;
+      padding: 10px;
+      margin-top: 20px;
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid $bg;
+      transition: 0.3s ease-in-out;
+      word-wrap: break-word;
+      word-break: break-all;
+    }
+
+    .input-title:active,
+    .input-title:focus,
+    .input-title:hover {
+      border: 1px solid $c1;
+    }
+
+    .input-desc {
+      @extend .input-title;
+    }
+
+    .input-date {
+      background-color: $c2;
+      border-radius: 10px;
+      padding: 10px;
+      margin-top: 20px;
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid $bg;
+      transition: 0.3s ease-in-out;
+      word-wrap: break-word;
+      word-break: break-all;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+      color: $c1;
+      font-size: 18px;
+      outline: none;
+    }
+
+    .input-date:active,
+    .input-date:focus,
+    .input-date:hover {
+      border: 1px solid $c1;
+    }
+
+    .bottom-btns {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      .back {
+        cursor: pointer;
+        justify-self: center;
+        padding: 15px 0;
+        background-color: #41363E;
+        color: #CC7277;
         border-radius: 10px;
-        padding: 10px;
-        margin-top: 20px;
-        width: 100%;
-        box-sizing: border-box;
-      }
-
-      .input-desc {
-        @extend .input-title;
-      }
-
-      .input-date {
-        @extend .input-title;
+        font-weight: bold;
+        text-align: center;
+        width: 85%;
+        max-width: 200px;
       }
 
       .button {
+        text-align: unset;
         @extend .input-title;
-        text-align: end;
+        padding: 0px;
+        justify-self: center;
+        margin: 0px;
+        text-align: center;
         font-weight: bold;
         background-color: unset;
+        border: none;
+        cursor: pointer;
+        background-color: $c2;
+        padding: 15px 0;
+        width: 85%;
+        max-width: 200px;
       }
+
+      .button:active,
+      .button:focus,
+      .button:hover {
+        border: none;
+      }
+    }
+  }
+}
+
+.editModal {
+  height: 100vh;
+  width: calc(100% - 60px);
+  max-width: 800px;
+  padding: 30px;
+  background-color: $bg;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 110;
+  overflow: hidden;
+  display: block;
+  padding-top: 30vh;
+
+  .back {
+    cursor: pointer;
+  }
+
+  .input-title {
+    all: unset;
+    background-color: $c2;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid $bg;
+    transition: 0.3s ease-in-out;
+    word-wrap: break-word;
+    word-break: break-all;
+  }
+
+  .input-title:active,
+  .input-title:focus,
+  .input-title:hover {
+    border: 1px solid $c1;
+  }
+
+  .input-desc {
+    @extend .input-title;
+  }
+
+  .input-date {
+    background-color: $c2;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid $bg;
+    transition: 0.3s ease-in-out;
+    word-wrap: break-word;
+    word-break: break-all;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    color: $c1;
+    font-size: 18px;
+    outline: none;
+  }
+
+  .input-date:active,
+  .input-date:focus,
+  .input-date:hover {
+    border: 1px solid $c1;
+  }
+
+  .bottom-btns {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    .back {
+      cursor: pointer;
+      justify-self: center;
+      padding: 15px 0;
+      background-color: #41363E;
+      color: #CC7277;
+      border-radius: 10px;
+      font-weight: bold;
+      text-align: center;
+      width: 85%;
+      max-width: 200px;
+    }
+
+    .button {
+      text-align: unset;
+      @extend .input-title;
+      padding: 0px;
+      justify-self: center;
+      margin: 0px;
+      text-align: center;
+      font-weight: bold;
+      background-color: unset;
+      border: none;
+      cursor: pointer;
+      background-color: $c2;
+      padding: 15px 0;
+      width: 85%;
+      max-width: 200px;
+    }
+
+    .button:active,
+    .button:focus,
+    .button:hover {
+      border: none;
     }
   }
 }

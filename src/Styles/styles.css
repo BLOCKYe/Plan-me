@@ -11,6 +11,10 @@
   margin-top: 40px;
 }
 
+.m80 {
+  margin-top: 80px;
+}
+
 .t1 {
   font-weight: bold;
   font-size: 18px;
@@ -40,12 +44,12 @@ html {
   padding: 0 30px;
 }
 
-.container .header .logo {
+.header .logo {
   font-size: 30px;
   font-weight: bold;
 }
 
-.container .tasklist .task {
+.tasklist .task {
   background-color: #414247;
   padding: 15px 15px;
   border-radius: 10px;
@@ -53,13 +57,13 @@ html {
   display: grid;
   -ms-grid-columns: 0fr 1fr 0fr;
       grid-template-columns: 0fr 1fr 0fr;
-      grid-template-areas: "check title edit" ". extended extended" ". extended extended";
+      grid-template-areas: "check title edit" "extended extended ." "extended extended del";
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
-.container .tasklist .task .check {
+.tasklist .task .check {
   background-color: #d7d7dd;
   width: 16px;
   height: 16px;
@@ -72,60 +76,81 @@ html {
   cursor: pointer;
 }
 
-.container .tasklist .task .checked {
-  background-color: #00b0ff;
+.tasklist .task .checked {
+  background-color: #303136;
 }
 
-.container .tasklist .task .title {
+.tasklist .task .title {
   -ms-grid-row: 1;
   -ms-grid-column: 2;
   grid-area: title;
   cursor: pointer;
+  padding-right: 10px;
 }
 
-.container .tasklist .task .edit {
+.tasklist .task .edit {
   -ms-grid-column-align: end;
       justify-self: end;
   font-size: 14px;
   -ms-grid-row: 1;
   -ms-grid-column: 3;
   grid-area: edit;
+  cursor: pointer;
 }
 
-.container .tasklist .task .extended {
+.tasklist .task .del {
+  -ms-grid-row: 3;
+  -ms-grid-column: 3;
+  grid-area: del;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.tasklist .task .extended {
   -ms-grid-row: 2;
   -ms-grid-row-span: 2;
-  -ms-grid-column: 2;
+  -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-area: extended;
   cursor: pointer;
+  padding-right: 10px;
 }
 
-.container .tasklist .task .extended .desc {
+.tasklist .task .extended .desc {
   grid-area: desc;
 }
 
-.container .tasklist .task .extended .date {
+.tasklist .task .extended .date {
   grid-area: date;
 }
 
-.container .add .button {
+.add .addButton {
   cursor: pointer;
+  background-color: #414247;
+  width: auto;
+  text-align: center;
+  border-radius: 10px;
+  padding: 15px;
 }
 
-.container .add .addModal {
+.add .addModal {
   height: 100vh;
   width: calc(100% - 60px);
+  max-width: 800px;
   padding: 30px;
   background-color: #303136;
   position: fixed;
-  top: 0;
-  left: 0;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   z-index: 110;
   overflow: hidden;
+  display: block;
+  padding-top: 30vh;
 }
 
-.container .add .addModal .input-title, .container .add .addModal .input-desc, .container .add .addModal .input-date, .container .add .addModal .button {
+.add .addModal .input-title, .add .addModal .input-desc, .add .addModal .bottom-btns .button, .editModal .bottom-btns .add .addModal .button {
   all: unset;
   background-color: #414247;
   border-radius: 10px;
@@ -134,11 +159,215 @@ html {
   width: 100%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  border: 1px solid #303136;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
-.container .add .addModal .button {
-  text-align: end;
+.add .addModal .input-title:active, .add .addModal .input-desc:active, .add .addModal .bottom-btns .button:active, .editModal .bottom-btns .add .addModal .button:active,
+.add .addModal .input-title:focus,
+.add .addModal .input-desc:focus,
+.add .addModal .bottom-btns .button:focus,
+.editModal .bottom-btns .add .addModal .button:focus,
+.add .addModal .input-title:hover,
+.add .addModal .input-desc:hover,
+.add .addModal .bottom-btns .button:hover,
+.editModal .bottom-btns .add .addModal .button:hover {
+  border: 1px solid #d7d7dd;
+}
+
+.add .addModal .input-date {
+  background-color: #414247;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 20px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #303136;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  word-wrap: break-word;
+  word-break: break-all;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  color: #d7d7dd;
+  font-size: 18px;
+  outline: none;
+}
+
+.add .addModal .input-date:active,
+.add .addModal .input-date:focus,
+.add .addModal .input-date:hover {
+  border: 1px solid #d7d7dd;
+}
+
+.add .addModal .bottom-btns {
+  margin-top: 40px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+}
+
+.add .addModal .bottom-btns .back {
+  cursor: pointer;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  padding: 15px 0;
+  background-color: #41363E;
+  color: #CC7277;
+  border-radius: 10px;
+  font-weight: bold;
+  text-align: center;
+  width: 85%;
+  max-width: 200px;
+}
+
+.add .addModal .bottom-btns .button {
+  text-align: unset;
+  padding: 0px;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  margin: 0px;
+  text-align: center;
   font-weight: bold;
   background-color: unset;
+  border: none;
+  cursor: pointer;
+  background-color: #414247;
+  padding: 15px 0;
+  width: 85%;
+  max-width: 200px;
+}
+
+.add .addModal .bottom-btns .button:active,
+.add .addModal .bottom-btns .button:focus,
+.add .addModal .bottom-btns .button:hover {
+  border: none;
+}
+
+.editModal {
+  height: 100vh;
+  width: calc(100% - 60px);
+  max-width: 800px;
+  padding: 30px;
+  background-color: #303136;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 110;
+  overflow: hidden;
+  display: block;
+  padding-top: 30vh;
+}
+
+.editModal .back {
+  cursor: pointer;
+}
+
+.editModal .input-title, .editModal .add .addModal .input-desc, .add .addModal .editModal .input-desc, .editModal .add .addModal .bottom-btns .button, .add .addModal .bottom-btns .editModal .button, .editModal .input-desc, .editModal .bottom-btns .button {
+  all: unset;
+  background-color: #414247;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 20px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #303136;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.editModal .input-title:active, .add .addModal .bottom-btns .editModal .button:active, .editModal .input-desc:active, .editModal .bottom-btns .button:active,
+.editModal .input-title:focus,
+.add .addModal .bottom-btns .editModal .button:focus,
+.editModal .input-desc:focus,
+.editModal .bottom-btns .button:focus,
+.editModal .input-title:hover,
+.add .addModal .bottom-btns .editModal .button:hover,
+.editModal .input-desc:hover,
+.editModal .bottom-btns .button:hover {
+  border: 1px solid #d7d7dd;
+}
+
+.editModal .input-date {
+  background-color: #414247;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 20px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #303136;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  word-wrap: break-word;
+  word-break: break-all;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  color: #d7d7dd;
+  font-size: 18px;
+  outline: none;
+}
+
+.editModal .input-date:active,
+.editModal .input-date:focus,
+.editModal .input-date:hover {
+  border: 1px solid #d7d7dd;
+}
+
+.editModal .bottom-btns {
+  margin-top: 40px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+}
+
+.editModal .bottom-btns .back {
+  cursor: pointer;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  padding: 15px 0;
+  background-color: #41363E;
+  color: #CC7277;
+  border-radius: 10px;
+  font-weight: bold;
+  text-align: center;
+  width: 85%;
+  max-width: 200px;
+}
+
+.editModal .bottom-btns .button {
+  text-align: unset;
+  padding: 0px;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  margin: 0px;
+  text-align: center;
+  font-weight: bold;
+  background-color: unset;
+  border: none;
+  cursor: pointer;
+  background-color: #414247;
+  padding: 15px 0;
+  width: 85%;
+  max-width: 200px;
+}
+
+.editModal .bottom-btns .button:active,
+.editModal .bottom-btns .button:focus,
+.editModal .bottom-btns .button:hover {
+  border: none;
 }
 /*# sourceMappingURL=styles.css.map */

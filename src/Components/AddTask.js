@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React, { useState, useContext } from "react";
 import { TasksContext } from "./TasksContext";
 
@@ -12,8 +13,14 @@ function AddTask() {
     e.preventDefault();
     if (title !== "") {
       settasks([
+        {
+          title: title,
+          desc: desc,
+          date: date,
+          done: false,
+          id: new Date().getTime(),
+        },
         ...tasks,
-        { title: title, desc: desc, date: date, id: tasks.length },
       ]);
       setopenModal(false);
       settitle("");
@@ -24,15 +31,18 @@ function AddTask() {
 
   return (
     <div className="add">
-      <div onClick={() => setopenModal(!openModal)} className="t1 m40 button">
-        📝 Add new task
-      </div>
+      <motion.div
+        whileTap={{ scale: 0.8 }}
+        whileHover={{ scale: 1.05 }}
+        onClick={() => setopenModal(!openModal)}
+        className="t1 m40 addButton"
+      >
+        📝 Create new task
+      </motion.div>
 
       {openModal && (
         <div className="addModal">
-          <div onClick={() => setopenModal(!openModal)} className="t1 m40">
-            ✖️ Back to list
-          </div>
+          <div className="t2">Create new task</div>
           <form onSubmit={addTask}>
             <input
               onChange={(e) => settitle(e.target.value)}
@@ -41,20 +51,36 @@ function AddTask() {
               className="input-title"
               placeholder="title"
             ></input>
-            <input
+            <textarea
               onChange={(e) => setdesc(e.target.value)}
               value={desc}
               type="text"
               className="input-desc"
               placeholder="description"
-            ></input>
+            ></textarea>
             <input
               onChange={(e) => setdate(e.target.value)}
               value={date}
               type="date"
               className="input-date"
             ></input>
-            <button className="button">Add task</button>
+            <div className="bottom-btns">
+              <motion.div
+                whileTap={{ scale: 0.8 }}
+                whileHover={{ scale: 1.05 }}
+                onClick={() => setopenModal(!openModal)}
+                className="back"
+              >
+                Cancel
+              </motion.div>
+              <motion.button
+                whileTap={{ scale: 0.8 }}
+                whileHover={{ scale: 1.05 }}
+                className="button"
+              >
+                Add task
+              </motion.button>
+            </div>
           </form>
         </div>
       )}
