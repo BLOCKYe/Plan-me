@@ -225,6 +225,7 @@ html {
   text-align: center;
   width: 85%;
   max-width: 200px;
+  font-size: 14px;
 }
 
 .add .addModal .bottom-btns .button {
@@ -242,6 +243,7 @@ html {
   padding: 15px 0;
   width: 85%;
   max-width: 200px;
+  font-size: 14px;
 }
 
 .add .addModal .bottom-btns .button:active,
@@ -346,6 +348,7 @@ html {
   text-align: center;
   width: 85%;
   max-width: 200px;
+  font-size: 14px;
 }
 
 .editModal .bottom-btns .button {
@@ -363,6 +366,7 @@ html {
   padding: 15px 0;
   width: 85%;
   max-width: 200px;
+  font-size: 14px;
 }
 
 .editModal .bottom-btns .button:active,
