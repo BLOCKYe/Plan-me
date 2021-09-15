@@ -5,6 +5,7 @@ function EditTask(props) {
   const [title, settitle] = useState(props.task.title);
   const [desc, setdesc] = useState(props.task.desc);
   const [date, setdate] = useState(props.task.date);
+  const [time, settime] = useState(props.task.time);
 
   const EditTask = (e) => {
     e.preventDefault();
@@ -16,6 +17,7 @@ function EditTask(props) {
         title: title,
         desc: desc,
         date: date,
+        time: time,
         done: props.task.done,
         id: props.task.id,
       };
@@ -27,7 +29,7 @@ function EditTask(props) {
 
   return (
     <div className="editModal">
-        <div className="t2">Edit task</div>
+      <div className="t2">Edit task</div>
       <form onSubmit={EditTask}>
         <input
           onChange={(e) => settitle(e.target.value)}
@@ -43,29 +45,37 @@ function EditTask(props) {
           className="input-desc"
           placeholder="description"
         ></textarea>
-        <input
-          onChange={(e) => setdate(e.target.value)}
-          value={date}
-          type="date"
-          className="input-date"
-        ></input>
-         <div className="bottom-btns">
-              <motion.div
-                whileTap={{ scale: 0.8 }}
-                whileHover={{ scale: 1.05 }}
-                onClick={() => props.seteditModal(false)}
-                className="back"
-              >
-                Cancel
-              </motion.div>
-              <motion.button
-                whileTap={{ scale: 0.8 }}
-                whileHover={{ scale: 1.05 }}
-                className="button"
-              >
-                Edit task
-              </motion.button>
-            </div>
+        <div className="datetime">
+          <input
+            onChange={(e) => setdate(e.target.value)}
+            value={date}
+            type="date"
+            className="input-date"
+          ></input>
+          <input
+            onChange={(e) => settime(e.target.value)}
+            value={time}
+            type="time"
+            className="input-date"
+          ></input>
+        </div>
+        <div className="bottom-btns">
+          <motion.div
+            whileTap={{ scale: 0.8 }}
+            whileHover={{ scale: 1.05 }}
+            onClick={() => props.seteditModal(false)}
+            className="back"
+          >
+            Cancel
+          </motion.div>
+          <motion.button
+            whileTap={{ scale: 0.8 }}
+            whileHover={{ scale: 1.05 }}
+            className="button"
+          >
+            Edit task
+          </motion.button>
+        </div>
       </form>
     </div>
   );

@@ -26,7 +26,7 @@
 }
 
 .o {
-  opacity: 0.3;
+  opacity: 0.5;
 }
 
 html {
@@ -73,7 +73,6 @@ html {
   -ms-grid-column: 1;
   grid-area: check;
   z-index: 100;
-  cursor: pointer;
 }
 
 .tasklist .task .checked {
@@ -84,26 +83,34 @@ html {
   -ms-grid-row: 1;
   -ms-grid-column: 2;
   grid-area: title;
-  cursor: pointer;
   padding-right: 10px;
 }
 
 .tasklist .task .edit {
-  -ms-grid-column-align: end;
-      justify-self: end;
-  font-size: 14px;
+  justify-self: end;
+  font-size: 18px;
   -ms-grid-row: 1;
   -ms-grid-column: 3;
   grid-area: edit;
-  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .tasklist .task .del {
   -ms-grid-row: 3;
   -ms-grid-column: 3;
   grid-area: del;
-  cursor: pointer;
-  font-size: 14px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 18px;
 }
 
 .tasklist .task .extended {
@@ -112,7 +119,6 @@ html {
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-area: extended;
-  cursor: pointer;
   padding-right: 10px;
 }
 
@@ -124,13 +130,48 @@ html {
   grid-area: date;
 }
 
+.tasklist .task .extended .position {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 0fr 0fr;
+      grid-template-columns: 0fr 0fr;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.tasklist .task .extended .position .goTop {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
 .add .addButton {
-  cursor: pointer;
   background-color: #414247;
   width: auto;
   text-align: center;
   border-radius: 10px;
   padding: 15px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.add .addButton .icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 10px;
+  font-size: 22px;
+  color: #d7d7dd;
 }
 
 .add .addModal {
@@ -148,6 +189,7 @@ html {
   overflow: hidden;
   display: block;
   padding-top: 30vh;
+  font-size: 14px;
 }
 
 .add .addModal .input-title, .add .addModal .input-desc, .add .addModal .bottom-btns .button, .editModal .bottom-btns .add .addModal .button {
@@ -178,12 +220,21 @@ html {
   border: 1px solid #d7d7dd;
 }
 
-.add .addModal .input-date {
+.add .addModal .datetime {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+}
+
+.add .addModal .datetime .input-date {
   background-color: #414247;
   border-radius: 10px;
   padding: 10px;
   margin-top: 20px;
-  width: 100%;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  width: calc(100% - 10px);
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   border: 1px solid #303136;
@@ -195,8 +246,9 @@ html {
   font-weight: 400;
   letter-spacing: 0.3px;
   color: #d7d7dd;
-  font-size: 18px;
+  font-size: 14px;
   outline: none;
+  cursor: pointer;
 }
 
 .add .addModal .input-date:active,
@@ -214,12 +266,11 @@ html {
 }
 
 .add .addModal .bottom-btns .back {
-  cursor: pointer;
   -ms-grid-column-align: center;
       justify-self: center;
   padding: 15px 0;
-  background-color: #41363E;
-  color: #CC7277;
+  background-color: #41363e;
+  color: #cc7277;
   border-radius: 10px;
   font-weight: bold;
   text-align: center;
@@ -238,7 +289,6 @@ html {
   font-weight: bold;
   background-color: unset;
   border: none;
-  cursor: pointer;
   background-color: #414247;
   padding: 15px 0;
   width: 85%;
@@ -267,10 +317,7 @@ html {
   overflow: hidden;
   display: block;
   padding-top: 30vh;
-}
-
-.editModal .back {
-  cursor: pointer;
+  font-size: 14px;
 }
 
 .editModal .input-title, .editModal .add .addModal .input-desc, .add .addModal .editModal .input-desc, .editModal .add .addModal .bottom-btns .button, .add .addModal .bottom-btns .editModal .button, .editModal .input-desc, .editModal .bottom-btns .button {
@@ -301,12 +348,21 @@ html {
   border: 1px solid #d7d7dd;
 }
 
-.editModal .input-date {
+.editModal .datetime {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+}
+
+.editModal .datetime .input-date {
   background-color: #414247;
   border-radius: 10px;
   padding: 10px;
   margin-top: 20px;
-  width: 100%;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  width: calc(100% - 10px);
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   border: 1px solid #303136;
@@ -318,8 +374,9 @@ html {
   font-weight: 400;
   letter-spacing: 0.3px;
   color: #d7d7dd;
-  font-size: 18px;
+  font-size: 14px;
   outline: none;
+  cursor: pointer;
 }
 
 .editModal .input-date:active,
@@ -337,12 +394,11 @@ html {
 }
 
 .editModal .bottom-btns .back {
-  cursor: pointer;
   -ms-grid-column-align: center;
       justify-self: center;
   padding: 15px 0;
-  background-color: #41363E;
-  color: #CC7277;
+  background-color: #41363e;
+  color: #cc7277;
   border-radius: 10px;
   font-weight: bold;
   text-align: center;
@@ -361,7 +417,6 @@ html {
   font-weight: bold;
   background-color: unset;
   border: none;
-  cursor: pointer;
   background-color: #414247;
   padding: 15px 0;
   width: 85%;
@@ -373,5 +428,20 @@ html {
 .editModal .bottom-btns .button:focus,
 .editModal .bottom-btns .button:hover {
   border: none;
+}
+
+@media (min-width: 768px) {
+  .back,
+  .del,
+  .check,
+  .addButton,
+  .title,
+  .add .addModal .bottom-btns .button,
+  .editModal .bottom-btns .button,
+  .goTop,
+  .goDown,
+  .edit {
+    cursor: pointer;
+  }
 }
 /*# sourceMappingURL=styles.css.map */

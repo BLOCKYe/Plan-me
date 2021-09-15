@@ -34,7 +34,7 @@ $c2: #414247;
 }
 
 .o {
-  opacity: 0.3;
+  opacity: 0.5;
 }
 
 html {
@@ -80,7 +80,6 @@ html {
       margin-right: 20px;
       grid-area: check;
       z-index: 100;
-      cursor: pointer;
     }
 
     .checked {
@@ -89,26 +88,28 @@ html {
 
     .title {
       grid-area: title;
-      cursor: pointer;
+
       padding-right: 10px;
     }
 
     .edit {
       justify-self: end;
-      font-size: 14px;
+      font-size: 18px;
       grid-area: edit;
-      cursor: pointer;
+      display: flex;
+      align-items: center;
     }
 
     .del {
       grid-area: del;
-      cursor: pointer;
-      font-size: 14px;
+      display: flex;
+      align-items: center;
+      font-size: 18px;
     }
 
     .extended {
       grid-area: extended;
-      cursor: pointer;
+
       padding-right: 10px;
 
       .desc {
@@ -118,17 +119,38 @@ html {
       .date {
         grid-area: date;
       }
+
+      .position {
+        display: grid;
+        grid-template-columns: 0fr 0fr;
+        align-items: center;
+
+        .goTop {
+          margin-right: 10px;
+          font-size: 18px;
+        }
+      }
     }
   }
 }
 .add {
   .addButton {
-    cursor: pointer;
     background-color: $c2;
     width: auto;
     text-align: center;
     border-radius: 10px;
     padding: 15px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    .icon {
+      display: flex;
+      align-items: center;
+      margin-right: 10px;
+      font-size: 22px;
+      color: $c1;
+    }
   }
 
   .addModal {
@@ -145,6 +167,7 @@ html {
     overflow: hidden;
     display: block;
     padding-top: 30vh;
+    font-size: 14px;
 
     .input-title {
       all: unset;
@@ -169,24 +192,30 @@ html {
     .input-desc {
       @extend .input-title;
     }
+    .datetime {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
 
-    .input-date {
-      background-color: $c2;
-      border-radius: 10px;
-      padding: 10px;
-      margin-top: 20px;
-      width: 100%;
-      box-sizing: border-box;
-      border: 1px solid $bg;
-      transition: 0.3s ease-in-out;
-      word-wrap: break-word;
-      word-break: break-all;
-      font-family: "Montserrat", sans-serif;
-      font-weight: 400;
-      letter-spacing: 0.3px;
-      color: $c1;
-      font-size: 18px;
-      outline: none;
+      .input-date {
+        background-color: $c2;
+        border-radius: 10px;
+        padding: 10px;
+        margin-top: 20px;
+        justify-self: center;
+        width: calc(100% - 10px);
+        box-sizing: border-box;
+        border: 1px solid $bg;
+        transition: 0.3s ease-in-out;
+        word-wrap: break-word;
+        word-break: break-all;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 400;
+        letter-spacing: 0.3px;
+        color: $c1;
+        font-size: 14px;
+        outline: none;
+        cursor: pointer;
+      }
     }
 
     .input-date:active,
@@ -201,11 +230,10 @@ html {
       grid-template-columns: 1fr 1fr;
 
       .back {
-        cursor: pointer;
         justify-self: center;
         padding: 15px 0;
-        background-color: #41363E;
-        color: #CC7277;
+        background-color: #41363e;
+        color: #cc7277;
         border-radius: 10px;
         font-weight: bold;
         text-align: center;
@@ -224,7 +252,6 @@ html {
         font-weight: bold;
         background-color: unset;
         border: none;
-        cursor: pointer;
         background-color: $c2;
         padding: 15px 0;
         width: 85%;
@@ -255,10 +282,7 @@ html {
   overflow: hidden;
   display: block;
   padding-top: 30vh;
-
-  .back {
-    cursor: pointer;
-  }
+  font-size: 14px;
 
   .input-title {
     all: unset;
@@ -284,23 +308,30 @@ html {
     @extend .input-title;
   }
 
-  .input-date {
-    background-color: $c2;
-    border-radius: 10px;
-    padding: 10px;
-    margin-top: 20px;
-    width: 100%;
-    box-sizing: border-box;
-    border: 1px solid $bg;
-    transition: 0.3s ease-in-out;
-    word-wrap: break-word;
-    word-break: break-all;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 400;
-    letter-spacing: 0.3px;
-    color: $c1;
-    font-size: 18px;
-    outline: none;
+  .datetime {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    .input-date {
+      background-color: $c2;
+      border-radius: 10px;
+      padding: 10px;
+      margin-top: 20px;
+      justify-self: center;
+      width: calc(100% - 10px);
+      box-sizing: border-box;
+      border: 1px solid $bg;
+      transition: 0.3s ease-in-out;
+      word-wrap: break-word;
+      word-break: break-all;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+      color: $c1;
+      font-size: 14px;
+      outline: none;
+      cursor: pointer;
+    }
   }
 
   .input-date:active,
@@ -315,11 +346,10 @@ html {
     grid-template-columns: 1fr 1fr;
 
     .back {
-      cursor: pointer;
       justify-self: center;
       padding: 15px 0;
-      background-color: #41363E;
-      color: #CC7277;
+      background-color: #41363e;
+      color: #cc7277;
       border-radius: 10px;
       font-weight: bold;
       text-align: center;
@@ -338,7 +368,6 @@ html {
       font-weight: bold;
       background-color: unset;
       border: none;
-      cursor: pointer;
       background-color: $c2;
       padding: 15px 0;
       width: 85%;
@@ -351,5 +380,20 @@ html {
     .button:hover {
       border: none;
     }
+  }
+}
+
+@media (min-width: 768px) {
+  .back,
+  .del,
+  .check,
+  .addButton,
+  .title,
+  .add .addModal .bottom-btns .button,
+  .editModal .bottom-btns .button,
+  .goTop,
+  .goDown,
+  .edit {
+    cursor: pointer;
   }
 }
